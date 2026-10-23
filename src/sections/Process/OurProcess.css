@@ -1,0 +1,480 @@
+/* =========================================
+   OUR PROCESS SECTION
+========================================= */
+
+.proc {
+  --proc-ink: #1f2a2c;
+  --proc-muted: #6b7274;
+  --proc-circle: #af8f70;
+  --proc-circle-dark: #1f2a2c;
+  --proc-bg: #f6f7f2;
+  --proc-line: #e2e3dd;
+  --proc-gap: 28px;
+  --proc-step: 0.18s;
+  --proc-speed: 0.8s;
+  --proc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  padding: 40px 5vw;
+  font-family: inherit;
+  color: var(--proc-ink);
+  box-sizing: border-box;
+}
+
+.proc *,
+.proc *::before,
+.proc *::after {
+  box-sizing: border-box;
+}
+
+/* Main card */
+
+.proc-card {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 30px clamp(18px, 3vw, 40px) 36px;
+  background: var(--proc-bg);
+  border: 1px solid var(--proc-line);
+  border-radius: 22px;
+  box-shadow: 0 18px 50px #0000000d;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.proc-head {
+  margin-bottom: 36px;
+  opacity: 0;
+}
+
+.proc-head h2 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--proc-ink);
+}
+
+.proc-head p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--proc-muted);
+}
+
+.proc.is-visible .proc-head {
+  animation: procUp 0.8s var(--proc-ease) 0.1s both;
+}
+
+/* =========================================
+   PROCESS GRID
+========================================= */
+
+.proc-list {
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  column-gap: var(--proc-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.proc-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  text-align: center;
+  opacity: 0;
+}
+
+.proc.is-visible .proc-step {
+  animation: procUp var(--proc-speed) var(--proc-ease) calc(0.25s + var(--i) * var(--proc-step)) both;
+}
+
+/* =========================================
+   ICONS
+========================================= */
+
+.proc-icon {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  background: var(--proc-circle);
+  color: #fff;
+  box-shadow: 0 8px 22px #af8f7040;
+  transition:
+    background 0.3s ease,
+    transform 0.4s var(--proc-ease),
+    box-shadow 0.3s ease;
+}
+
+.proc-icon svg {
+  display: block;
+  width: 29px;
+  height: 29px;
+}
+
+.proc-step:hover .proc-icon {
+  background: var(--proc-circle-dark);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px #1f2a2c25;
+}
+
+/* Icon pop effect */
+
+.proc.is-visible .proc-icon {
+  animation:
+    procPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) calc(0.35s + var(--i) * var(--proc-step)) both,
+    procPulse 1.2s ease-in-out calc(1.5s + var(--i) * 0.25s) 2;
+}
+
+/* =========================================
+   STEP TEXT
+========================================= */
+
+.proc-text {
+  position: relative;
+  z-index: 2;
+}
+
+.proc-text h3 {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--proc-ink);
+  transition: color 0.3s ease;
+}
+
+.proc-num {
+  color: var(--proc-circle);
+}
+
+.proc-text p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--proc-muted);
+}
+
+.proc-step:hover .proc-text h3 {
+  color: var(--proc-circle);
+}
+
+/* =========================================
+   DOTTED CONNECTOR
+========================================= */
+
+.proc-connector {
+  position: absolute;
+  z-index: 1;
+  top: 26px;
+  left: calc(50% + 34px);
+  width: calc(100% + var(--proc-gap) - 68px);
+  height: 3px;
+  overflow: hidden;
+
+  background-image: radial-gradient(circle,
+      #d3c8b9 1.5px,
+      transparent 1.8px);
+  background-size: 9px 3px;
+  background-repeat: repeat-x;
+}
+
+/* The colored dots progressively fill the connector */
+
+.proc-connector-fill {
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(circle,
+      var(--proc-circle) 1.5px,
+      transparent 1.8px);
+  background-size: 9px 3px;
+  background-repeat: repeat-x;
+
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Glowing dot travels along the connector */
+
+.proc-connector-runner {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 0;
+
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #fff;
+  box-shadow:
+    0 0 5px var(--proc-circle),
+    0 0 12px var(--proc-circle);
+
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+/* Connector loading starts after its icon appears */
+
+.proc.is-visible .proc-connector-fill {
+  animation: connectorLoad 1.4s var(--proc-ease) calc(0.7s + var(--i) * 0.35s) forwards;
+}
+
+.proc.is-visible .proc-connector-runner {
+  animation: connectorRunner 1.4s ease-in-out calc(0.7s + var(--i) * 0.35s) forwards;
+}
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes procUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes procPop {
+  from {
+    opacity: 0;
+    transform: scale(0.35) rotate(-20deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes procPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 22px #af8f7040;
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 7px #af8f7020,
+      0 8px 26px #af8f7070;
+  }
+}
+
+@keyframes connectorLoad {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes connectorRunner {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) and (min-width: 641px) {
+  .proc-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 38px;
+  }
+
+  .proc-step:nth-child(3n) .proc-connector {
+    display: none;
+  }
+}
+
+/* =========================================
+   MOBILE: VERTICAL CONNECTORS
+========================================= */
+
+@media (max-width: 640px) {
+  .proc {
+    padding: 28px 4vw;
+  }
+
+  .proc-card {
+    padding: 24px 18px;
+  }
+
+  .proc-head {
+    margin-bottom: 30px;
+  }
+
+  .proc-list {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+
+  .proc-step {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 30px;
+    text-align: left;
+  }
+
+  .proc-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .proc-icon {
+    flex-basis: 54px;
+    width: 54px;
+    height: 54px;
+    margin: 0;
+  }
+
+  .proc-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .proc-text {
+    padding-top: 5px;
+  }
+
+  .proc-text h3 {
+    font-size: 15px;
+  }
+
+  .proc-text p {
+    font-size: 13px;
+  }
+
+  /* Vertical dotted connector */
+  .proc-connector {
+    top: 57px;
+    bottom: 3px;
+    left: 25px;
+    width: 3px;
+    height: auto;
+
+    background-image: radial-gradient(circle,
+        #d3c8b9 1.5px,
+        transparent 1.8px);
+    background-size: 3px 9px;
+    background-repeat: repeat-y;
+  }
+
+  .proc-connector-fill {
+    background-image: radial-gradient(circle,
+        var(--proc-circle) 1.5px,
+        transparent 1.8px);
+    background-size: 3px 9px;
+    background-repeat: repeat-y;
+
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .proc-connector-runner {
+    top: 0;
+    left: 50%;
+  }
+
+  .proc.is-visible .proc-connector-fill {
+    animation-name: connectorLoadVertical;
+  }
+
+  .proc.is-visible .proc-connector-runner {
+    animation-name: connectorRunnerVertical;
+  }
+}
+
+@keyframes connectorLoadVertical {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes connectorRunnerVertical {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proc *,
+  .proc *::before,
+  .proc *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .proc-head,
+  .proc-step {
+    opacity: 1;
+    transform: none;
+  }
+
+  .proc-connector-fill {
+    transform: scale(1);
+  }
+
+  .proc-connector-runner {
+    display: none;
+  }
+}
