@@ -237,174 +237,157 @@ export default function HorizontalGallery({
         </header>
       )}
 
-      <div
-        className="hg-stage"
-        onWheel={handleWheel}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-      >
-        {items.map((service, index) => {
-          const offset = offsetOf(index);
-          const distance = Math.abs(offset);
-          const isActive = index === active;
-          const visible = distance <= 2;
-
-          return (
-            <motion.article
-              key={service.id}
-              className={`hg-card ${isActive ? "is-active" : ""}`}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${index + 1} of ${count}`}
-              style={{
-                zIndex: isActive ? 100 : 100 - distance * 10,
-                pointerEvents: visible ? "auto" : "none",
-              }}
-              initial={false}
-              animate={{
-                x: `${offset * 65}%`,
-                z: reduceMotion ? 0 : -distance * 140,
-                scale: 1 - Math.min(distance, 2) * 0.12,
-                rotateY: reduceMotion
-                  ? 0
-                  : -Math.sign(offset) * (distance === 0 ? 0 : 32),
-                opacity: visible ? 1 : 0,
-              }}
-              transition={
-                reduceMotion
-                  ? { duration: 0 }
-                  : {
-                      type: "spring",
-                      stiffness: 55,
-                      damping: 25,
-                      mass: 1.5,
-                    }
-              }
-            >
-              <img
-                className="hg-img"
-                src={service.image}
-                alt={isActive ? service.title : ""}
-                draggable={false}
-                loading={distance <= 1 ? "eager" : "lazy"}
-              />
-
-              <div className="hg-shade" aria-hidden="true" />
-
-              <motion.div
-                className="hg-content"
-                aria-hidden={!isActive}
-                inert={!isActive}
-                initial={false}
-                animate={{
-                  opacity: isActive ? 1 : 0,
-                  y: isActive ? 0 : 18,
-                }}
-                transition={
-                  reduceMotion
-                    ? { duration: 0 }
-                    : {
-                        opacity: {
-                          duration: 0.7,
-                          ease: [0.22, 1, 0.36, 1],
-                        },
-                        y: {
-                          duration: 0.8,
-                          ease: [0.22, 1, 0.36, 1],
-                        },
-                      }
-                }
-                style={{
-                  visibility: isActive ? "visible" : "hidden",
-                  pointerEvents: isActive ? "auto" : "none",
-                }}
-              >
-                <div className="hg-copy">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </div>
-
-                <div className="hg-action">
-                  <Link
-                    className="hg-btn"
-                    to={`${linkBase}/${service.slug}`}
-                    tabIndex={isActive ? 0 : -1}
-                  >
-                    <span>{service.cta}</span>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </Link>
-                </div>
-              </motion.div>
-            </motion.article>
-          );
-        })}
-      </div>
-
-      {/* Left and right navigation */}
-      <div className="hg-controls">
+      <div className="hg-carousel">
         <motion.button
           type="button"
-          className="hg-arrow"
+          className="hg-arrow hg-arrow-left"
           aria-label="Previous service"
           onClick={() => go(-1)}
           whileHover={reduceMotion ? {} : { scale: 1.08, x: -3 }}
           whileTap={reduceMotion ? {} : { scale: 0.92 }}
         >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M19 12H5M11 6l-6 6 6 6" />
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
           </svg>
         </motion.button>
 
-        <span className="hg-counter" aria-live="polite">
-          {String(active + 1).padStart(2, "0")}
-          <span className="hg-counter-line" />
-          {String(count).padStart(2, "0")}
-        </span>
+        <div
+          className="hg-stage"
+          onWheel={handleWheel}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          {items.map((service, index) => {
+            const offset = offsetOf(index);
+            const distance = Math.abs(offset);
+            const isActive = index === active;
+            const visible = distance <= 2;
+
+            return (
+              <motion.article
+                key={service.id}
+                className={`hg-card ${isActive ? "is-active" : ""}`}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${count}`}
+                style={{
+                  zIndex: isActive ? 100 : 100 - distance * 10,
+                  pointerEvents: visible ? "auto" : "none",
+                }}
+                initial={false}
+                animate={{
+                  x: `${offset * 78}%`,
+                  z: reduceMotion ? 0 : -Math.min(distance, 2) * 100,
+                  scale: distance === 0 ? 1 : distance === 1 ? 0.84 : 0.7,
+                  rotateY: reduceMotion
+                    ? 0
+                    : offset === 0
+                      ? 0
+                      : -Math.sign(offset) * 38,
+                  opacity: visible ? 1 : 0,
+                }}
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : {
+                        type: "spring",
+                        stiffness: 55,
+                        damping: 25,
+                        mass: 1.5,
+                      }
+                }
+              >
+                <img
+                  className="hg-img"
+                  src={service.image}
+                  alt={isActive ? service.title : ""}
+                  draggable={false}
+                  loading={distance <= 1 ? "eager" : "lazy"}
+                />
+
+                <div className="hg-shade" aria-hidden="true" />
+
+                <motion.div
+                  className="hg-content"
+                  aria-hidden={!isActive}
+                  inert={!isActive}
+                  initial={false}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    y: isActive ? 0 : 18,
+                  }}
+                  transition={
+                    reduceMotion
+                      ? { duration: 0 }
+                      : {
+                          opacity: {
+                            duration: 0.7,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                          y: {
+                            duration: 0.8,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }
+                  }
+                  style={{
+                    visibility: isActive ? "visible" : "hidden",
+                    pointerEvents: isActive ? "auto" : "none",
+                  }}
+                >
+                  <div className="hg-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+
+                  <div className="hg-action">
+                    <Link
+                      className="hg-btn"
+                      to={`${linkBase}/${service.slug}`}
+                      tabIndex={isActive ? 0 : -1}
+                    >
+                      <span>{service.cta}</span>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.div>
+              </motion.article>
+            );
+          })}
+        </div>
 
         <motion.button
           type="button"
-          className="hg-arrow"
+          className="hg-arrow hg-arrow-right"
           aria-label="Next service"
           onClick={() => go(1)}
           whileHover={reduceMotion ? {} : { scale: 1.08, x: 3 }}
           whileTap={reduceMotion ? {} : { scale: 0.92 }}
         >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M5 12h14M13 6l6 6-6 6" />
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" />
           </svg>
         </motion.button>
+      </div>
+
+      <div className="hg-counter" aria-live="polite">
+        <span className="hg-counter-line" />
+        <span>
+          {active + 1} / {count}
+        </span>
+        <span className="hg-counter-line" />
       </div>
     </section>
   );

@@ -143,7 +143,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, #f0efed 0%, #f0efed00 35%);
+  /* background: linear-gradient(90deg, #f0efed 0%, #f0efed00 35%); */
 }
 
 .hc-drag {
@@ -324,7 +324,7 @@
   }
 
   .hc-media::after {
-    background: linear-gradient(180deg, #f0efed 0%, #f0efed00 30%);
+    /* background: linear-gradient(180deg, #f0efed 0%, #f0efed00 30%); */
   }
 
   .hc-next-card, .hc-count {

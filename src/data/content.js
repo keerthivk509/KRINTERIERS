@@ -151,4 +151,20 @@ export const content = {
     phone: "(761) 999 8576",
     email: "hello@dreamspace.com",
   },
+  blbo: [
+    {
+      title: "Bedroom Interior Design",
+      subtitle: "Comfortable and elegant bedroom spaces.",
+      parent: "Interior Design",
+      content: "<p>Explore our custom bedroom interior solutions.</p>",
+      image: "/images/bedroom-banner.jpg",
+      images: [
+        {
+          url: "/images/bedroom-1.jpg",
+          title: "Luxury Bedroom",
+          content: "A modern bedroom with elegant finishes.",
+        },
+      ],
+    },
+  ],
 };

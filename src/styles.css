@@ -6,6 +6,7 @@
   --muted: #6f685e;
   --line: rgba(29, 28, 26, .14);
   --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease: cubic-bezier(.22, 1, .36, 1) !important;
   --r: 24px;
   --pad: clamp(20px, 4vw, 56px);
   --font: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
