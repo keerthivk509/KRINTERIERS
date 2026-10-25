@@ -70,7 +70,7 @@ function ScrollManager() {
       );
 
       element?.scrollIntoView({ behavior: "smooth" });
-    }, 12);
+    }, 120);
 
     return () => clearTimeout(timer);
   }, [pathname, hash]);

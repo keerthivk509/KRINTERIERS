@@ -1,4 +1,4 @@
-// Static copy (mirrors the template). Replace with Dreamspace copy.
+// Static copy (mirrors the template). Replace with KR Interior copy.
 const F = (id, w = 1000, ext = "jpg") =>
   `https://framerusercontent.com/images/${id}.${ext}?width=${w}`;
 export const content = {
@@ -149,7 +149,7 @@ export const content = {
   footer: {
     address: "476 Della Street, New York City",
     phone: "(761) 999 8576",
-    email: "hello@dreamspace.com",
+    email: "hello@KR Interior.com",
   },
   blbo: [
     {

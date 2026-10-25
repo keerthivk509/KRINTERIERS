@@ -13,7 +13,7 @@ const DEFAULT_STORY = {
   eyebrow: "OUR STORY",
   title: "Creating spaces that feel like home",
   paragraphs: [
-    "At DreamSpace Interior Design, we believe every space has a story. Our mission is to create beautiful, functional and personalised interiors that enhance your everyday life.",
+    "At KR Interior Interior Design, we believe every space has a story. Our mission is to create beautiful, functional and personalised interiors that enhance your everyday life.",
     "From the first conversation to the final handover, we stay close to your ideas, your budget and your schedule, so the result feels like you.",
   ],
   image: photo("photo-1600607687939-ce8a6c25118c"),

@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="wordmark" aria-hidden="true">
-        DREAMSPACE
+        KR Interior
       </div>
     </footer>
   );

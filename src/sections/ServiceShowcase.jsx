@@ -5,7 +5,7 @@ import { useServices } from "../hooks/useServices";
 import { content } from "../data/content";
 import { EASE, SplitText, pad } from "../components/Motion";
 
-// Numbered services list: hover/focus a row to expand it and wipe in its image. Fed by DreamSpaceCMS.
+// Numbered services list: hover/focus a row to expand it and wipe in its image. Fed by KR InteriorCMS.
 export default function ServiceShowcase() {
   const { services } = useServices();
   const [a, setA] = useState(0);

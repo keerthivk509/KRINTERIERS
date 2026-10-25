@@ -12,7 +12,7 @@ export const slugify = (s = "") =>
 
 const byOrder = (a, b) => (a.order ?? 0) - (b.order ?? 0);
 
-// Map whatever DreamSpaceCMS returns into the shape the UI uses.
+// Map whatever KR InteriorCMS returns into the shape the UI uses.
 // Adjust ONLY these two functions if your CMS field names differ.
 const normUnit = (u, i) => ({
   id: u.id ?? u._id ?? i,
@@ -47,7 +47,7 @@ export async function fetchServices() {
     if (!list.length) throw new Error("CMS returned no services");
     return { services: list.map(normService).sort(byOrder), fallback: false };
   } catch (err) {
-    console.warn("[DreamSpaceCMS] using fallback data:", err.message);
+    console.warn("[KR InteriorCMS] using fallback data:", err.message);
     return { services: FALLBACK_SERVICES.map(normService), fallback: true };
   }
 }
