@@ -63,7 +63,7 @@ export default function Home() {
       <FurnitureShowcase />
       {/* <RecentProjects /> */}
       {/* <Team /> */}
-      {/* <Reviews /> */}
+      <Reviews />
       <FAQ />
       {/* <Contact /> */}
     </>
