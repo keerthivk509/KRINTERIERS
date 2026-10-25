@@ -1,101 +1,63 @@
-/* ============================
-   COVERFLOW — smooth 3D carousel
-   ============================ */
 .coverflow {
   position: relative;
   width: 100%;
   padding: 2rem 0 4rem;
   perspective: 1600px;
-  perspective-origin: center center;
-  overflow: hidden;
-  user-select: none;
+  overflow: hidden
 }
 
 .coverflow__stage {
   position: relative;
   width: 100%;
-  height: clamp(320px, 48vw, 560px);
+  height: clamp(320px, 48vw, 400px);
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center
 }
 
-/* ── Cards ───────────────────── */
 .coverflow__card {
   position: absolute;
   width: clamp(260px, 36vw, 480px);
   height: 100%;
-  border-radius: var(--radius-lg, 28px);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transform-origin: center center;
+  transition: transform .7s var(--ease), opacity .7s var(--ease), filter .7s var(--ease);
   cursor: pointer;
-  box-shadow: var(--shadow, 0 12px 32px rgba(26, 26, 26, 0.1));
-
-  /* Individual axis transitions — SMOOTH */
-  transform:
-    translateX(var(--tx, 0%)) translateZ(var(--tz, 0px)) rotateY(var(--ry, 0deg)) scale(var(--sc, 1));
-  opacity: var(--op, 1);
-  z-index: var(--z, 1);
-  filter: brightness(var(--br, 1));
-  pointer-events: var(--pe, auto);
-
-  transition:
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease;
-
-  /* Force GPU layer */
-  will-change: transform, opacity, filter;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
+  box-shadow: var(--shadow)
 }
 
 .coverflow__card.is-active {
-  box-shadow: var(--shadow-lg, 0 24px 64px rgba(26, 26, 26, 0.16));
-  cursor: default;
+  box-shadow: var(--shadow-lg)
 }
 
-/* ── Media ───────────────────── */
 .coverflow__media {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 100%
 }
 
 .coverflow__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-  -webkit-user-drag: none;
+  border-radius: 30px !important;
 }
 
-.coverflow__card.is-active:hover .coverflow__media img {
-  transform: scale(1.06);
-}
-
-/* ── Gradient overlay ────────── */
 .coverflow__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(0, 0, 0, 0.15) 45%,
-      transparent 70%);
+  background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent 60%);
   opacity: 0;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: none;
+  transition: opacity .6s var(--ease);
+  border-radius: 30px !important;
+
 }
 
 .coverflow__card.is-active .coverflow__overlay {
-  opacity: 1;
+  opacity: 1
 }
 
-/* ── Caption ─────────────────── */
 .coverflow__info {
   position: absolute;
   left: 0;
@@ -103,31 +65,25 @@
   bottom: 0;
   padding: 2rem;
   color: #fff;
-  transform: translateY(16px);
-  opacity: 0;
-  animation: cf-info-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-  pointer-events: none;
+  transform: translateY(20px);
+  /* opacity: 0; */
+  animation: cfInfoIn .7s var(--ease) .2s forwards
 }
 
 .coverflow__sub {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: .72rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--clay-light, #d4a57a);
-  margin-bottom: 0.5rem;
+  color: var(--clay-light);
+  display: block;
+  margin-bottom: .5rem
 }
 
 .coverflow__title {
   font-size: clamp(1.3rem, 2.4vw, 2rem);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #fff;
+  color: #fff
 }
 
-/* ── Arrows ──────────────────── */
 .coverflow__nav {
   position: absolute;
   top: 50%;
@@ -135,132 +91,45 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--paper, #fff);
-  color: var(--ink, #1a1a1a);
+  background: var(--paper);
+  color: var(--ink);
   display: grid;
   place-items: center;
-  font-size: 1.1rem;
-  box-shadow: var(--shadow, 0 12px 32px rgba(26, 26, 26, 0.1));
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 20;
-  border: none;
-  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all .3s var(--ease);
+  z-index: 20
 }
 
 .coverflow__nav:hover {
-  background: var(--clay, #b87a4f);
-  color: #fff;
-  transform: translateY(-50%) scale(1.08);
-}
-
-.coverflow__nav:active {
-  transform: translateY(-50%) scale(0.94);
+  background: var(--clay);
+  color: #fff
 }
 
 .coverflow__nav--prev {
-  left: max(1rem, 3vw);
+  left: max(1rem, 3vw)
 }
 
 .coverflow__nav--next {
-  right: max(1rem, 3vw);
+  right: max(1rem, 3vw)
 }
 
-/* ── Dots ────────────────────── */
 .coverflow__dots {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+  gap: .5rem;
+  margin-top: 1.5rem
 }
 
 .coverflow__dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--line, #e8e4de);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition:
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease;
-}
-
-.coverflow__dot:hover {
-  background: var(--clay-light, #d4a57a);
+  background: var(--line);
+  transition: all .3s var(--ease)
 }
 
 .coverflow__dot.is-active {
   width: 28px;
   border-radius: 4px;
-  background: var(--clay, #b87a4f);
-}
-
-/* ── Keyframe ────────────────── */
-@keyframes cf-info-in {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ── Responsive ──────────────── */
-@media (max-width: 900px) {
-  .coverflow__stage {
-    height: clamp(280px, 58vw, 440px);
-  }
-
-  .coverflow__card {
-    width: clamp(240px, 68vw, 400px);
-  }
-}
-
-@media (max-width: 640px) {
-  .coverflow {
-    padding: 1rem 0 3rem;
-  }
-
-  .coverflow__card {
-    width: 78vw;
-    border-radius: var(--radius, 16px);
-  }
-
-  .coverflow__nav {
-    width: 42px;
-    height: 42px;
-    font-size: 0.95rem;
-  }
-
-  .coverflow__info {
-    padding: 1.25rem;
-  }
-
-  .coverflow__title {
-    font-size: 1.15rem;
-  }
-
-  .coverflow__sub {
-    font-size: 0.65rem;
-  }
-}
-
-/* ── Reduced motion ──────────── */
-@media (prefers-reduced-motion: reduce) {
-  .coverflow__card {
-    transition-duration: 0.01ms !important;
-  }
-
-  .coverflow__info {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  .coverflow__media img {
-    transition: none;
-  }
+  background: var(--clay)
 }

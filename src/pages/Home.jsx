@@ -16,33 +16,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import HorizontalGallery from "../sections/Services/HorizontalGallery";
 import RecentProjects from "../sections/RecentProjects/RecentProjects";
 import FurnitureShowcase from "../sections/FurnitureShowcase/FurnitureShowcase";
-const gallery = [
-  {
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
-    title: "Nordic Living",
-    subtitle: "Living Room",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
-    title: "Warm Minimal",
-    subtitle: "Bedroom",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
-    title: "Clay Studio",
-    subtitle: "Workspace",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
-    title: "Soft Light",
-    subtitle: "Living Room",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-    title: "Quiet Corner",
-    subtitle: "Reading Nook",
-  },
-];
 
 export default function Home() {
   return (

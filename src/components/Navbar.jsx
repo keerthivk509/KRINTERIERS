@@ -90,7 +90,7 @@ export default function Navbar() {
             About Us
           </Link>
           <Link to={"/blob"} className="nl">
-            Blob
+            Blog
           </Link>
         </nav>
 
@@ -183,7 +183,7 @@ export default function Navbar() {
               About Us
             </Link>
             <Link to={"/blob"} className="nl">
-              Blob
+              Blog
             </Link>
             <Link to="/#contact">Get it now</Link>
           </motion.div>

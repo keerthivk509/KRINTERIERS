@@ -5,11 +5,17 @@
   --ink: #1d1c1a;
   --muted: #6f685e;
   --line: rgba(29, 28, 26, .14);
+  /* --ease: cubic-bezier(.22, 1, .36, 1); */
+  /* --ease: cubic-bezier(.22, 1, .36, 1) !important; */
   --ease: cubic-bezier(.22, 1, .36, 1);
-  --ease: cubic-bezier(.22, 1, .36, 1) !important;
   --r: 24px;
   --pad: clamp(20px, 4vw, 56px);
   --font: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* --reveal-time: 5s; */
+  /* --stagger: 3; */
+  --reveal-time: 6s;
+  --reveal-stagger: 4;
+  --reveal-ease: cubic-bezier(.25, .1, .25, 1);
 }
 
 * {
@@ -1257,8 +1263,8 @@ button {
   *:not(.marquee-track),
   *:not(.marquee-track)::before,
   *:not(.marquee-track)::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+    /* animation-duration: .01ms !important;
+    transition-duration: .01ms !important; */
   }
 
   html {
@@ -1278,8 +1284,8 @@ button {
       *:not(.marquee-track),
       *:not(.marquee-track)::before,
       *:not(.marquee-track)::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
+        /* animation-duration: .01ms ;
+        transition-duration: .01ms ; */
       }
 
       html {
