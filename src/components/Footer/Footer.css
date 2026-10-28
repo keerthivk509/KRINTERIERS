@@ -234,7 +234,7 @@
 /* Mobile view */
 @media (max-width: 767px) {
     .hero {
-        flex-direction: column;
+        /* flex-direction: column; */
         padding-top: 30px;
         gap: 15px;
     }

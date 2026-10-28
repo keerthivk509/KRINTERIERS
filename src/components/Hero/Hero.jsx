@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { getSlides } from "../../api";
 const slideds1 = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85",
-    eyebrow: "TRANSFORMING SPACES",
-    title: "Beautiful Interiors",
-    second: "for a Better Life",
-    desc: "We design spaces that inspire, comfort and reflect your unique style. From modern minimalism to timeless elegance, we bring your vision to life.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85",
-    eyebrow: "DESIGNED AROUND YOU",
-    title: "A Home That Feels",
-    second: "Uniquely Yours",
-    desc: "Thoughtful materials, balanced colours and beautiful details come together to make your space feel personal.",
-  },
+  // {
+  //   image:
+  //     "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85",
+  //   eyebrow: "TRANSFORMING SPACES",
+  //   title: "Beautiful Interiors",
+  //   second: "for a Better Life",
+  //   desc: "We design spaces that inspire, comfort and reflect your unique style. From modern minimalism to timeless elegance, we bring your vision to life.",
+  // },
+  // {
+  //   image:
+  //     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85",
+  //   eyebrow: "DESIGNED AROUND YOU",
+  //   title: "A Home That Feels",
+  //   second: "Uniquely Yours",
+  //   desc: "Thoughtful materials, balanced colours and beautiful details come together to make your space feel personal.",
+  // },
   {
     image:
       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=85",

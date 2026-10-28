@@ -39,11 +39,11 @@
 }
 
 .brand-logo {
-  transition: transform .6s var(--ease)
+  /* transition: transform .6s var(--ease) */
 }
 
 .brand-lockup:hover .brand-logo {
-  transform: rotate(-8deg) scale(1.08)
+  /* transform: rotate(-8deg) scale(1.08) */
 }
 
 /* nav links: underline grows from the left */

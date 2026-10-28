@@ -41,7 +41,7 @@ Warm minimal furniture website design
     margin: 0;
     max-width: 680px;
     color: var(--reviews-text);
-    font-size: clamp(42px, 4.2vw, 70px);
+    font-size: clamp(30px, 4.2vw, 70px);
     font-weight: 500;
     line-height: 0.99;
     letter-spacing: -0.075em;
@@ -120,4 +120,12 @@ Warm minimal furniture website design
     white-space: nowrap;
     padding-right: 40px;
     color: var(--ink)
+}
+
+@media (max-width: 767px) {
+    .reviews-heading {
+        display: block;
+        align-items: start;
+
+    }
 }

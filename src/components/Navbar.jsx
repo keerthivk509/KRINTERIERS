@@ -4,6 +4,7 @@ import { navigation } from "../data/siteData.js";
 import useMenus from "../hooks/useMenus.js";
 import logo from "../assets/LOGO.png";
 import "./Navbar.css";
+import AnimatedLogo from "./AnimatedLogo/AnimatedLogo.jsx";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
@@ -143,7 +144,7 @@ export default function Navbar() {
 
         {hasSubmenu && (
           <div
-            className={`submenu ${openSubmenu === key ? "submenu-open" : "submenu-open"}`}
+            className={`submenu ${openSubmenu === key ? "submenu-open" : ""}`}
           >
             {renderSubmenuLinks(item.submenu)}
           </div>
@@ -155,7 +156,13 @@ export default function Navbar() {
   return (
     <nav className={`site-navbar ${mobileOpen ? "site-navbar-color" : ""}`}>
       <Link className="brand-lockup" to="/" onClick={close}>
-        <img src={logo} alt="KR" className="brand-logo" />
+        <AnimatedLogo
+          src={logo}
+          alt="KR Interior Designs"
+          className="brand-logo"
+          logo={logo}
+        />
+        {/* <img src={logo} alt="KR" className="brand-logo" /> */}
       </Link>
 
       <div className="container nav-inner">
@@ -180,7 +187,7 @@ export default function Navbar() {
             <div
               className="nav-item has-submenu more-menu"
               onMouseEnter={() => {
-                if (isDesktop) setOpenSubmenu("more");
+                if (isDesktop && hasSubmenu) setOpenSubmenu(key);
               }}
               onMouseLeave={() => {
                 if (isDesktop) setOpenSubmenu(null);

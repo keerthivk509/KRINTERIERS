@@ -32,7 +32,7 @@
     width: 100px;
     height: 100px;
     object-fit: contain;
-    border-radius: 22px;
+    border-radius: 0 0 22px 22px;
 }
 
 .site-navbar .nav-inner {
@@ -112,7 +112,8 @@
 }
 
 /* ========================================
-   REGULAR SUBMENU
+   SUBMENU BASE
+   Hidden by default; only the active menu opens
 ======================================== */
 
 .site-navbar .submenu {
@@ -133,6 +134,7 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* Open only when JSX adds submenu-open */
 .site-navbar .submenu.submenu-open {
     display: flex;
     flex-direction: column;
@@ -231,7 +233,7 @@
     font-size: 12px;
 }
 
-/* Nested submenu appears on the right */
+/* Nested submenu on the right for desktop */
 .site-navbar .more-submenu {
     display: none;
     position: absolute;
@@ -251,7 +253,6 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Hover and keyboard focus keep the side submenu visible */
 .site-navbar .more-dropdown-group.has-side-submenu:hover>.more-submenu,
 .site-navbar .more-dropdown-group.has-side-submenu:focus-within>.more-submenu {
     display: flex;
@@ -337,7 +338,6 @@
         justify-content: flex-end;
         overflow: visible;
 
-
         background: transparent;
         border: none;
         box-shadow: none;
@@ -352,7 +352,7 @@
         width: 42px;
         height: 40px;
         padding: 0;
-        border: 0px solid rgba(41, 37, 34, 0.35);
+        border: 0;
         border-radius: 6px;
         background: transparent;
         color: #292522;
@@ -403,6 +403,7 @@
         color: #292522;
     }
 
+    /* Mobile submenus are in normal document flow */
     .site-navbar .submenu {
         display: none;
         position: static;
@@ -417,6 +418,7 @@
         background: rgba(243, 240, 234, 0.95);
     }
 
+    /* Only the selected submenu is visible */
     .site-navbar .submenu.submenu-open {
         display: flex;
         flex-direction: column;
@@ -427,6 +429,7 @@
         color: #292522;
     }
 
+    /* Keep More hidden on mobile if its items are not rendered separately */
     .site-navbar .more-menu,
     .site-navbar .more-submenu {
         display: none !important;
