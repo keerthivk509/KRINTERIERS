@@ -12,7 +12,7 @@ import OutletTimeline from "./components/Outlettimeline/OutletTimeline.jsx";
 import Marquee from "./components/Marquee/Marquee.jsx";
 import Coverflow from "./components/Services/Coverflow.jsx";
 import FurnitureShowcase from "./components/FurnitureShowcase/FurnitureShowcase.jsx";
-import FAQ from "./components/FAQ/Faq.jsx";
+import FAQ from "./components/FAQ/FAQ.jsx";
 import { Reviews } from "./components/Reviews/Reviews.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import HorizontalGallery from "./components/Services/HorizontalGallery.jsx";
