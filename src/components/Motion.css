@@ -1,0 +1,70 @@
+.animated-text {
+    margin: 0;
+    line-height: 1.1;
+    perspective: 600px;
+}
+
+.animated-text-word {
+    display: inline-block;
+    margin-right: 0.22em;
+    backface-visibility: hidden;
+}
+
+.animated-text-word:last-child {
+    margin-right: 0;
+}
+
+/* Animation 1: 3D pop / flip */
+.animated-text-word.pop {
+    opacity: 0;
+    transform: rotateX(110deg);
+    transform-origin: 50% 100%;
+
+    animation:
+        textShow 0.01s linear var(--word-delay) forwards,
+        textPop 1.2s var(--text-ease) var(--word-delay) both;
+}
+
+/* Animation 2: Jump / line-up */
+.animated-text-word.jump {
+    display: inline-block;
+    color: inherit;
+
+    animation: lineUp 1s var(--text-ease) var(--word-delay) both;
+}
+
+@keyframes textShow {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes textPop {
+    to {
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes lineUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-text-word.highlighted {
+    color: var(--highlight-color);
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+    .animated-text-word {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+} */

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+  <title id="title">KR house logo</title>
+  <rect width="180" height="180" rx="28" fill="#f3f0ea"/>
+  <path d="M30 84 L90 34 L150 84" fill="none" stroke="#AA8D6F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M45 78 V139 H135 V78" fill="none" stroke="#F8F4EF" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M76 139 V101 Q90 82 104 101 V139" fill="none" stroke="#AA8D6F" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M59 91 H69 M111 91 H121" stroke="#F8F4EF" stroke-width="6" stroke-linecap="round"/>
+</svg>

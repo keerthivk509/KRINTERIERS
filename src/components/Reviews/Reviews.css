@@ -1,0 +1,123 @@
+/* =========================================
+REVIEWS SECTION
+Warm minimal furniture website design
+========================================= */
+
+.reviews-section {
+    --reviews-bg: #f3f0e9;
+    --reviews-card: #e9e4da;
+    --reviews-text: #201f1d;
+    --reviews-muted: #817a70;
+    --reviews-radius: 25px;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: clamp(60px, 7vw, 100px) 0 clamp(65px, 8vw, 110px);
+    background: var(--reviews-bg);
+    color: var(--reviews-text);
+}
+
+/* Heading layout */
+
+.reviews-section .container {
+    width: min(100% - 48px, 1170px);
+    margin-inline: auto;
+}
+
+.reviews-heading {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: clamp(35px, 7vw, 110px);
+    margin-bottom: clamp(50px, 6vw, 85px);
+}
+
+.reviews-title {
+    max-width: 680px;
+}
+
+.reviews-section .reviews-title .h2 {
+    margin: 0;
+    max-width: 680px;
+    color: var(--reviews-text);
+    font-size: clamp(42px, 4.2vw, 70px);
+    font-weight: 500;
+    line-height: 0.99;
+    letter-spacing: -0.075em;
+    text-wrap: balance;
+}
+
+.reviews-description {
+    max-width: 460px;
+    margin: 0;
+    color: #716b63;
+    font-size: clamp(15px, 1.1vw, 18px);
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.025em;
+}
+
+/* Reviews */
+.review {
+    flex: 0 0 min(80vw, 420px);
+    background: var(--surface);
+    border-radius: var(--r);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 18px; */
+    white-space: normal;
+    transition: transform .5s var(--ease);
+}
+
+.review:hover {
+    transform: translateY(-6px)
+}
+
+.stars {
+    letter-spacing: 3px
+}
+
+.review figcaption {
+    display: flex;
+    flex-direction: column
+}
+
+.review figcaption span {
+    color: var(--muted);
+    font-size: 14px;
+    padding: 0px !important;
+}
+
+/* Marquee */
+
+
+.marquee-track.rev {
+    animation-direction: reverse
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused
+}
+
+.marquee-set {
+    display: flex;
+    gap: 24px;
+    padding-right: 24px
+}
+
+@keyframes mq {
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+.mq-item {
+    font-size: clamp(28px, 3.5vw, 64px);
+    letter-spacing: -.03em;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: 40px;
+    color: var(--ink)
+}

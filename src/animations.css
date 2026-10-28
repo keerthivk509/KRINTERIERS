@@ -1,4 +1,4 @@
-/* ===== DreamSpace motion layer — loaded after styles.css ===== */
+/* ===== KR motion layer — loaded after styles.css ===== */
 :root {
   --ease: cubic-bezier(.2, .7, .2, 1);
   /* Scroll-reveal speed: change these two to tune (client asked for 5s-10s) */
@@ -9,8 +9,11 @@
   /* try 5s up to 10s */
   --reveal-stagger: 4;
   /* multiplies the delay between siblings (cards, tiles) */
-  --reveal-ease: cubic-bezier(.25, .1, .25, 1)
+  --reveal-ease: cubic-bezier(.25, .1, .25, 1);
+
 }
+
+
 
 /* ---------- Scroll progress + navbar ---------- */
 .scroll-progress {
@@ -27,12 +30,12 @@
 }
 
 .site-navbar {
-  transition: padding .35s var(--ease), box-shadow .35s
+  /* transition: padding .35s var(--ease), box-shadow .35s */
 }
 
 .scrolled .site-navbar {
   padding: 4px 0;
-  box-shadow: 0 8px 30px #0004
+  /* box-shadow: 0 8px 30px #0004 */
 }
 
 .brand-logo {
@@ -66,6 +69,7 @@
 }
 
 .submenu-toggle i {
+  color: #000;
   display: inline-block;
   transition: transform .3s
 }
@@ -257,7 +261,7 @@
 .marquee {
   overflow: hidden;
   background: var(--cream);
-  border-bottom: 1px solid #eadfd3;
+  /* border-bottom: 1px solid #eadfd3; */
   padding: 16px 0
 }
 
@@ -275,7 +279,7 @@
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  font: italic 500 26px 'Playfair Display', serif;
+  /* font: italic 500 26px 'Playfair Display', serif; */
   color: var(--burgundy);
   padding: 0 26px;
   transition: color .3s
@@ -288,7 +292,7 @@
 .marquee i {
   color: var(--gold);
   font-size: 14px;
-  margin-left: 52px;
+  /* margin-left: 52px; */
   animation: spin 8s linear infinite
 }
 
@@ -609,7 +613,7 @@
 
   /* .marquee-track,  */
   .marquee i {
-    animation: none
+    /* animation: none */
   }
 
   .hero-bg {
@@ -623,6 +627,7 @@
 
 /* ===================== Submenu (CMS) pages ===================== */
 .page-fade {
+  margin-top: -100px;
   animation: pageIn .7s var(--ease) both
 }
 
@@ -731,7 +736,7 @@
 }
 
 .subpage-body h2, .subpage-body h3 {
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   color: var(--ink);
   margin: 30px 0 12px
 }
@@ -840,4 +845,12 @@
   to {
     background-position: -200% 0
   }
+}
+
+
+.line {
+  display: block;
+  color: inherit;
+  animation: lineUp 1s var(--ease) .25s both;
+
 }

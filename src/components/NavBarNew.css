@@ -1,0 +1,265 @@
+/* ========================================
+   ALL NAVIGATION MEGA MENUS
+======================================== */
+
+/* Allow every normal dropdown to span the navbar */
+.site-navbar .nav-item:not(.more-menu):has(> .submenu) {
+    position: static;
+}
+
+.site-navbar .nav-inner,
+.site-navbar .nav-menu {
+    overflow: visible;
+}
+
+/* Common mega-menu panel for every navigation item */
+.site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    align-content: start;
+    gap: 18px 36px;
+
+    margin: 0;
+    padding: 24px 32px;
+
+    background: #fff;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+}
+
+/* Show any open mega menu */
+.site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu.submenu-open {
+    display: grid;
+}
+
+/* Links inside all mega menus */
+.site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu>a {
+    display: block;
+    min-width: 0;
+    padding: 7px 0;
+
+    color: #766e65;
+    background: transparent;
+
+    font-size: 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Hover */
+.site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu>a:hover {
+    color: #8a3333;
+    background: transparent;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 991.98px) {
+    .site-navbar .nav-item:not(.more-menu):has(> .submenu) {
+        position: relative;
+    }
+
+    .site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu.submenu-open {
+        display: grid;
+        position: static;
+
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 20px;
+
+        margin: 0;
+        padding: 16px;
+
+        background: #eee2d4;
+        border: none;
+        border-radius: 10px;
+        box-shadow: none;
+    }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 575.98px) {
+    .site-navbar .nav-item:not(.more-menu):has(> .submenu)>.submenu.submenu-open {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 14px;
+    }
+}
+
+
+/* ========================================
+   MORE MENU — FULL-WIDTH MEGA MENU
+======================================== */
+
+.site-navbar .more-menu {
+    position: static;
+}
+
+/* Full-width More dropdown */
+.site-navbar .more-menu>.more-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    align-content: start;
+    gap: 18px 36px;
+
+    margin: 0;
+    padding: 24px 32px;
+
+    background: #fff;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+}
+
+/* Show when More is open */
+.site-navbar .more-menu>.more-dropdown.submenu-open {
+    display: grid;
+}
+
+/* Each top-level item in More */
+.site-navbar .more-dropdown-group {
+    position: relative;
+    min-width: 0;
+    width: 100%;
+}
+
+/* Heading row */
+.site-navbar .more-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border-radius: 6px;
+}
+
+.site-navbar .more-item-row:hover {
+    background: transparent;
+}
+
+/* More category title */
+.site-navbar .more-main-link {
+    display: block;
+    min-width: 0;
+    padding: 0 0 8px;
+
+    color: #292522;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.site-navbar .more-main-link:hover {
+    color: #8a3333;
+}
+
+.site-navbar .more-side-arrow {
+    padding: 0 8px;
+    color: #766e65;
+}
+
+/* Nested links underneath each More category */
+.site-navbar .more-dropdown-group>.more-submenu {
+    display: flex;
+    flex-direction: column;
+
+    position: static;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.site-navbar .more-submenu a {
+    display: block;
+    padding: 5px 0;
+
+    color: #766e65;
+    font-size: 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.site-navbar .more-submenu a:hover {
+    color: #8a3333;
+    background: transparent;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 991.98px) {
+    .site-navbar .more-menu {
+        display: none !important;
+    }
+
+    .site-navbar .more-menu>.more-dropdown {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   DESKTOP: NESTED MORE SUBMENU
+======================================== */
+
+@media (min-width: 992px) {
+    .site-navbar .more-dropdown-group.has-side-submenu>.more-submenu {
+        display: flex;
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+}

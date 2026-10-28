@@ -1,7 +1,7 @@
 {
-  "name": "KRInterior-react",
-  "private": true,
+  "name": "KR-interior-react",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,14 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap-icons": "^1.13.2",
-    "framer-motion": "^11.11.0",
+    "@vitejs/plugin-react": "latest",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "dompurify": "^3.2.0",
+    "framer-motion": "^14.6.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.0"
+    "react-router-dom": "^6.28.0",
+    "vite": "^6.0.5"
   }
 }
