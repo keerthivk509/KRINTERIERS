@@ -137,7 +137,7 @@ async function request(path, signal) {
 }
 
 export async function getMenus(signal) {
-  if (DEMO_MODE) return DEMO_MENUS;
+  if (DEMO_MODE) return [];
 
   const menu = normalizeMenus(await request(MENUS_PATH, signal));
 

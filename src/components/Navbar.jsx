@@ -39,7 +39,7 @@ export default function Navbar({ onContactClick }) {
         (menu) =>
           String(menu.title).toLowerCase() === String(item.label).toLowerCase(),
       );
-      console.log(dynamic, menus);
+
       if (dynamic && dynamic.submenus?.length) {
         return {
           ...item,
@@ -49,7 +49,7 @@ export default function Navbar({ onContactClick }) {
           })),
         };
       }
-
+      console.log("item", item);
       return item;
     }),
 
@@ -212,6 +212,9 @@ export default function Navbar({ onContactClick }) {
                 }`}
               >
                 {moreItems.map((item, index) => {
+                  {
+                    console.log("moreItems", moreItems);
+                  }
                   const hasSubmenu = Boolean(item.submenu?.length);
                   const key = `more-item-${index}`;
 

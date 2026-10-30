@@ -27,7 +27,7 @@ const DEFAULT_ITEMS = [
   },
 ];
 export default function Faq() {
-  const [faqs, setFaqs] = useState([]);
+  const [faqs, setFaqs] = useState(DEFAULT_ITEMS);
   const [openId, setOpenId] = useState(null);
   const [loading, setLoading] = useState(true);
 
