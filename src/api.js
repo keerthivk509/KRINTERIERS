@@ -20,7 +20,7 @@ const ASSET_URL = (
   (API_URL ? new URL(API_URL, window.location.origin).origin : "")
 ).replace(/\/$/, "");
 
-export const DEMO_MODE = !API_URL;
+export const DEMO_MODE = true;
 
 const pick = (o, ...keys) => {
   for (const k of keys) {
@@ -146,10 +146,8 @@ export async function getMenus(signal) {
 
 export async function getCarousels(signal) {
   if (DEMO_MODE) return SLIDE;
-  console.log("raw", CAROUSELS);
 
   const raw = await request(CAROUSELS, signal);
-  console.log("raw", raw, CAROUSELS);
 
   const slides = unwrap(raw);
 
@@ -243,20 +241,36 @@ export const DEMO_PAGES = {
 };
 export const DEMO_MENUS = [
   {
-    title: "About Us",
-    submenus: [
-      { title: "Our Story", slug: "our-story" },
-      { title: "Why Choose Us", slug: "why-choose-us" },
+    label: "Designs",
+    href: "#Designs",
+    submenu: [
+      { label: "Our Story", href: "#about" },
+      { label: "Why Choose Us", href: "#why-us" },
+      { label: "Our Process", href: "#process" },
     ],
   },
   {
-    title: "Services",
-    submenus: [
-      { title: "Residential Design", slug: "residential-design" },
-      { title: "Commercial Design", slug: "commercial-design" },
-      { title: "Modular Kitchen", slug: "modular-kitchen" },
+    label: "Services",
+    href: "#services",
+    submenu: [
+      { label: "Residential Design", href: "#services" },
+      { label: "Commercial Design", href: "#services" },
+      { label: "Modular Kitchen", href: "#services" },
+      { label: "Renovation", href: "#services" },
     ],
   },
+  {
+    label: "Works",
+    href: "#gallery",
+    submenu: [
+      { label: "Living Rooms", href: "#gallery" },
+      { label: "Bedrooms", href: "#gallery" },
+      { label: "Kitchens", href: "#gallery" },
+    ],
+  },
+  { label: "Blog", href: "/blog" },
+  { label: "About Us", href: "/about" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export const SLIDE = [
