@@ -125,7 +125,9 @@ export default function Coverflow({ items = [], autoplay = 3600 }) {
           <button
             type="button"
             className="coverflow__nav coverflow__nav--prev"
-            onClick={prev}
+            onClick={() => {
+              prev();
+            }}
             aria-label="Previous slide"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -136,7 +138,9 @@ export default function Coverflow({ items = [], autoplay = 3600 }) {
           <button
             type="button"
             className="coverflow__nav coverflow__nav--next"
-            onClick={next}
+            onClick={() => {
+              next();
+            }}
             aria-label="Next slide"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">

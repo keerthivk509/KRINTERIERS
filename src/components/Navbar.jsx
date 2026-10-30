@@ -5,7 +5,8 @@ import useMenus from "../hooks/useMenus.js";
 import logo from "../assets/LOGO.png";
 import "./Navbar.css";
 import AnimatedLogo from "./AnimatedLogo/AnimatedLogo.jsx";
-export default function Navbar() {
+import ContactModal from "./ContactModal/ContactModal.jsx";
+export default function Navbar({ onContactClick }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 992);
@@ -38,7 +39,7 @@ export default function Navbar() {
         (menu) =>
           String(menu.title).toLowerCase() === String(item.label).toLowerCase(),
       );
-
+      console.log(dynamic, menus);
       if (dynamic && dynamic.submenus?.length) {
         return {
           ...item,
@@ -257,7 +258,14 @@ export default function Navbar() {
             </div>
           )}
 
-          <a className="btn btn-gold nav-quote" href="#contact" onClick={close}>
+          <a
+            className="btn btn-gold nav-quote"
+            href="#contact"
+            onClick={() => {
+              close;
+              onContactClick();
+            }}
+          >
             Get it now
           </a>
         </div>

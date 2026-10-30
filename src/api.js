@@ -14,7 +14,7 @@ const MENUS_PATH = import.meta.env.VITE_MENUS_PATH || "/menus";
 const PAGE_PATH = import.meta.env.VITE_PAGE_PATH || "/pages";
 const CAROUSELS = import.meta.env.VITE_CAROUSEL_PATH || "/carousels";
 const REVIEWS = import.meta.env.VITE_REVIEWS_PATH || "/reviews";
-
+const FAQ = import.meta.env.VITE_FAQ_PATH || "/faq";
 const ASSET_URL = (
   import.meta.env.VITE_ASSET_URL ||
   (API_URL ? new URL(API_URL, window.location.origin).origin : "")
@@ -158,6 +158,10 @@ export async function getCarousels(signal) {
 export const getPublicReviews = async (signal) => {
   const data = await request(REVIEWS, signal);
   return Array.isArray(data) ? data : (data.reviews ?? data.data ?? []);
+};
+export const getPublicFAQs = async (signal) => {
+  const data = await request(FAQ, signal);
+  return data;
 };
 export async function getPage(slug, signal) {
   if (DEMO_MODE) {

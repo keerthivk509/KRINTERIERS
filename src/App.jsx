@@ -19,6 +19,12 @@ import HorizontalGallery from "./components/Services/HorizontalGallery.jsx";
 import OurProcess from "./components/Process/OurProcess.jsx";
 import { getSlides } from "./api.js";
 import { Hero } from "./components/Hero/Hero.jsx";
+import Faq from "./components/FaqPage/Faq.jsx";
+import ContactModal from "./components/ContactModal/ContactModal.jsx";
+import FloatingSocial from "./components/FloatingSocial/FloatingSocial.jsx";
+import BlobPage from "./components/BlogPage/BlobPage.jsx";
+import AboutPage from "./components/AboutPage/AboutPage.jsx";
+import AboutUs from "./components/AboutUs/AboutUs.jsx";
 
 function Title({ eyebrow, title, description }) {
   return (
@@ -556,22 +562,32 @@ function Home() {
 }
 export default function App() {
   const { pathname } = useLocation();
+  const [showContact, setShowContact] = useState(false);
+  const onContactClick = () => setShowContact(true);
   return (
     <>
       <ScrollEffects />
       <ScrollManager />
-      <Navbar />
+      <Navbar onContactClick={onContactClick} />
       <main
         className="page-fade"
         key={pathname.startsWith("/page/") ? pathname : "/"}
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/blog" element={<BlobPage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/page/:slug" element={<SubPage />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
+      <ContactModal
+        isOpen={showContact}
+        onClose={() => setShowContact(false)}
+      />
       <Footer />
+      <FloatingSocial />
     </>
   );
 }

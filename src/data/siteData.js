@@ -28,9 +28,9 @@ export const navigation = [
       { label: "Kitchens", href: "#gallery" },
     ],
   },
-  { label: "Blog", href: "#contact" },
-  { label: "About Us", href: "#contact" },
-  { label: "FAQ", href: "#contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "About Us", href: "/about" },
+  { label: "FAQ", href: "/faq" },
 ];
 export const services = [
   {

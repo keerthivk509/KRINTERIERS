@@ -1,0 +1,131 @@
+.floating-social {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.social-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.social-item {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    background: var(--social-color);
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.16);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.7);
+    transition:
+        opacity 0.25s ease,
+        transform 0.3s ease,
+        visibility 0.3s;
+    transition-delay: 0s;
+}
+
+.social-menu-open {
+    pointer-events: auto;
+}
+
+.social-menu-open .social-item {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition-delay: calc(var(--item-index) * 60ms);
+}
+
+.social-item:hover {
+    transform: scale(1.12);
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.24);
+}
+
+.social-main-button {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    background: #aa8d6f;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.social-main-button:hover {
+    transform: scale(1.08);
+    background: #aa8d6f;
+}
+
+.social-main-active {
+    transform: rotate(90deg);
+}
+
+.social-tooltip {
+    position: absolute;
+    right: 58px;
+    padding: 7px 11px;
+    color: #fff;
+    background: #252525;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(5px);
+    transition: 0.2s ease;
+    pointer-events: none;
+}
+
+.social-item:hover .social-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+@media (max-width: 576px) {
+    .floating-social {
+        right: 16px;
+        bottom: 18px;
+    }
+
+    .social-main-button {
+        width: 54px;
+        height: 54px;
+    }
+
+    .social-item {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+
+    .social-item,
+    .social-main-button,
+    .social-tooltip {
+        transition: none;
+    }
+} */
