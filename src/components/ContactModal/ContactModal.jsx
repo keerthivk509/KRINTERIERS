@@ -65,7 +65,9 @@ export default function ContactModal({ isOpen, onClose }) {
     }));
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
+    event?.preventDefault();
+    event?.stopPropagation();
     if (loading) return;
 
     onClose();
@@ -114,7 +116,9 @@ export default function ContactModal({ isOpen, onClose }) {
       className="contact-modal-overlay"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
-          handleClose();
+          event.preventDefault();
+          event.stopPropagation();
+          handleClose(event);
         }
       }}
     >
@@ -127,11 +131,11 @@ export default function ContactModal({ isOpen, onClose }) {
         <button
           type="button"
           className="contact-modal-close"
-          onClick={handleClose}
+          onClick={(event) => handleClose(event)}
           disabled={loading}
           aria-label="Close contact form"
         >
-          ×
+          X
         </button>
 
         <div className="contact-modal-heading">
@@ -290,7 +294,7 @@ export default function ContactModal({ isOpen, onClose }) {
           <button
             type="button"
             className="contact-submit-btn"
-            onClick={handleClose}
+            onClick={(event) => handleClose(event)}
           >
             Close
           </button>

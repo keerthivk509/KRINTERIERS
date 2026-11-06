@@ -40,7 +40,7 @@ const defaultReviews = {
   ],
 };
 
-export function Reviews() {
+export function Reviews({ id }) {
   const [reviewItems, setReviewItems] = useState(defaultReviews.items);
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export function Reviews() {
     const rating = Number.isFinite(r[3]) ? Math.max(1, Math.min(5, r[3])) : 5;
 
     return (
-      <figure className="review">
+      <figure className="review" id={id}>
         <div
           className="stars"
           role="img"

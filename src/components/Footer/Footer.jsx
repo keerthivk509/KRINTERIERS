@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { content } from "../../assets/data/content";
 import "./Footer.css";
+import FloatingSocial from "../FloatingSocial/FloatingSocial";
+import FooterSocial from "./FooterSocial";
 // import { useServices } from "../hooks/useServices";
 // import { content } from "../data/content";
 const I = (id, ext = "jpg") =>
@@ -138,6 +140,14 @@ export default function Footer() {
       <div className="wordmark" aria-hidden="true">
         KR Interior
       </div>
+
+      <footer className="site-footer">
+        <div className="footer-content">
+          <p>{/* © 2026 Dezprox. All rights reserved. */}</p>
+
+          <FooterSocial variant="footer" />
+        </div>
+      </footer>
     </footer>
   );
 }

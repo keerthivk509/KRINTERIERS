@@ -17,7 +17,11 @@ import { Reviews } from "./components/Reviews/Reviews.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import HorizontalGallery from "./components/Services/HorizontalGallery.jsx";
 import OurProcess from "./components/Process/OurProcess.jsx";
-import { getSlides } from "./api.js";
+import {
+  getPublicDesignCategories,
+  getPublicProjects,
+  getSlides,
+} from "./api.js";
 import { Hero } from "./components/Hero/Hero.jsx";
 import Faq from "./components/FaqPage/Faq.jsx";
 import ContactModal from "./components/ContactModal/ContactModal.jsx";
@@ -25,6 +29,14 @@ import FloatingSocial from "./components/FloatingSocial/FloatingSocial.jsx";
 import BlobPage from "./components/BlogPage/BlobPage.jsx";
 import AboutPage from "./components/AboutPage/AboutPage.jsx";
 import AboutUs from "./components/AboutUs/AboutUs.jsx";
+import Services from "./components/ServicePage/Services.jsx";
+import Works from "./components/Works/Works.jsx";
+import ProjectDetails from "./components/ProjectDetails/ProjectDetails.jsx";
+import { Service } from "./components/Service/Service.jsx";
+import DesignGallery from "./components/DesignGallery/DesignGallery.jsx";
+import DesignDetailsModal from "./components/DesignGallery/DesignDetailsModal.jsx";
+import { gallery, mapCategory } from "./assets/data/fallback.js";
+import { defaultCategories } from "./assets/data/defaultCategories.js";
 
 function Title({ eyebrow, title, description }) {
   return (
@@ -222,40 +234,7 @@ function About() {
     </section>
   );
 }
-function Services() {
-  return (
-    <section className="section-space services-section" id="services">
-      <div className="container">
-        <Title
-          eyebrow="OUR SERVICES"
-          title="Thoughtful Design for Every Space"
-          description="From a single room to a complete renovation, we help you make every corner count."
-        />
-        <div className="row g-4">
-          {services.map((s, i) => (
-            <Reveal className="col-md-6 col-lg-3" delay={i * 110} key={s.title}>
-              <article className="service-card">
-                <div className="service-img">
-                  <img src={s.image} alt={s.title} loading="lazy" />
-                </div>
-                <div className="service-card-body">
-                  <span className="service-icon">
-                    <i className={`bi ${s.icon}`} />
-                  </span>
-                  <h3>{s.title}</h3>
-                  <p>{s.description}</p>
-                  <a href="#contact">
-                    Explore service <i className="bi bi-arrow-right" />
-                  </a>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+
 function Gallery() {
   const [filter, setFilter] = useState("All");
   const filters = ["All", "Living Room", "Bedroom", "Kitchen"];
@@ -537,19 +516,110 @@ function Contact() {
 //     </>
 //   );
 // }
-function Home() {
+function Home({ onContactClick }) {
+  const [projects, setProjects] = useState(gallery);
+  const [design, setDesign] = useState(defaultCategories);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchProjects = async () => {
+      try {
+        const response = await getPublicProjects();
+
+        if (!cancelled) {
+          const apiProjects = response?.data;
+
+          const res =
+            apiProjects.length > 0
+              ? apiProjects?.map((data) => {
+                  const re = {
+                    image: data?.coverImage,
+                    title: data?.clientName,
+                    subtitle: data?.location,
+                  };
+                  return re;
+                })
+              : gallery;
+
+          setProjects(res);
+        }
+      } catch (error) {
+        console.error("Unable to load projects:", error);
+
+        if (!cancelled) {
+          setProjects(gallery);
+        }
+      }
+    };
+
+    fetchProjects();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // ===================================================
+  // SINGLE API CALL
+  // ===================================================
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchProjects = async () => {
+      try {
+        const response = await getPublicDesignCategories();
+
+        // Supports Axios response or direct fetch JSON.
+        const apiCategories = Array.isArray(response)
+          ? response
+          : Array.isArray(response?.data)
+            ? response.data
+            : [];
+
+        const formattedCategories = apiCategories
+          .filter((category) => category.isActive !== false)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map(mapCategory);
+
+        if (!cancelled) {
+          setDesign(formattedCategories);
+        }
+      } catch (err) {
+        const formattedCategories = defaultCategories
+          .filter((category) => category.isActive !== false)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map(mapCategory);
+
+        if (!cancelled) {
+          setDesign(formattedCategories);
+        }
+      } finally {
+        if (!cancelled) {
+        }
+      }
+    };
+
+    fetchProjects();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   return (
     <>
-      <Hero />
+      <Hero onContactClick={onContactClick} />
       <Marquee />
       <OutletTimeline />
 
       <OurProcess />
-      <HorizontalGallery />
+      <Service />
+      <HorizontalGallery projects={projects} />
       <FurnitureShowcase />
 
-      <Reviews />
-      <FAQ />
+      <Reviews id="review" />
+      <FAQ id="faq" />
 
       {/* <About /> */}
       {/* <Services />
@@ -564,27 +634,118 @@ export default function App() {
   const { pathname } = useLocation();
   const [showContact, setShowContact] = useState(false);
   const onContactClick = () => setShowContact(true);
+
+  const [selectedDesign, setSelectedDesign] = useState(null);
+
+  const handleGetQuote = (design) => {
+    setSelectedDesign(null);
+    setShowContact(true);
+  };
+  const [design, setDesign] = useState(defaultCategories);
+
+  // ===================================================
+  // SINGLE API CALL
+  // ===================================================
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchProjects = async () => {
+      try {
+        const response = await getPublicDesignCategories();
+
+        // Supports Axios response or direct fetch JSON.
+        const apiCategories = Array.isArray(response)
+          ? response
+          : Array.isArray(response?.data)
+            ? response.data
+            : [];
+
+        const formattedCategories = apiCategories
+          .filter((category) => category.isActive !== false)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map(mapCategory);
+
+        if (!cancelled) {
+          setDesign(formattedCategories);
+        }
+      } catch (err) {
+        const formattedCategories = defaultCategories
+          .filter((category) => category.isActive !== false)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map(mapCategory);
+
+        if (!cancelled) {
+          setDesign(formattedCategories);
+        }
+      } finally {
+        if (!cancelled) {
+        }
+      }
+    };
+
+    fetchProjects();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   return (
     <>
       <ScrollEffects />
       <ScrollManager />
-      <Navbar onContactClick={onContactClick} />
+      <Navbar onContactClick={onContactClick} design={design} />
       <main
         className="page-fade"
         key={pathname.startsWith("/page/") ? pathname : "/"}
       >
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/blog" element={<BlobPage />} />
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="/" element={<Home onContactClick={onContactClick} />} />
+          <Route
+            path="/service"
+            element={<Services onContactClick={onContactClick} />}
+          />
+          <Route
+            path="/blog"
+            element={<BlobPage onContactClick={onContactClick} />}
+          />
+          <Route
+            path="/about"
+            element={<AboutUs onContactClick={onContactClick} />}
+          />
+          <Route
+            path="/work"
+            element={<Works onContactClick={onContactClick} />}
+          />
+          <Route
+            path="/works/:slug"
+            element={<ProjectDetails onContactClick={onContactClick} />}
+          />
+          <Route
+            path="/design"
+            element={
+              <DesignGallery
+                onDesignClick={setSelectedDesign}
+                onContactClick={onContactClick}
+              />
+            }
+          />
+
           <Route path="/page/:slug" element={<SubPage />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Home onContactClick={onContactClick} />} />
         </Routes>
       </main>
       <ContactModal
         isOpen={showContact}
         onClose={() => setShowContact(false)}
+      />
+      <DesignDetailsModal
+        design={selectedDesign}
+        onClose={() => setSelectedDesign(null)}
+        onGetQuote={(design) => {
+          setSelectedDesign(null);
+          handleGetQuote(design);
+        }}
       />
       <Footer />
       <FloatingSocial />

@@ -96,7 +96,7 @@ export default function Marquee({ logo = "/images/kr-logo.png" }) {
 
               <div className="why-marquee-content">
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                {/* <p>{item.description}</p> */}
               </div>
             </article>
           ))}

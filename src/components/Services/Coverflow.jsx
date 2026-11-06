@@ -106,12 +106,11 @@ export default function Coverflow({ items = [], autoplay = 3600 }) {
                   className={`coverflow__info ${isActive ? "is-current" : ""}`}
                   key={`${index}-${active}`}
                 >
-                  {item.subtitle && (
-                    <span className="coverflow__sub">{item.subtitle}</span>
-                  )}
-
                   {item.title && (
                     <h3 className="coverflow__title">{item.title}</h3>
+                  )}
+                  {item.subtitle && (
+                    <span className="coverflow__sub">{item.subtitle}</span>
                   )}
                 </div>
               </div>

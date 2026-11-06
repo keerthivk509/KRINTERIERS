@@ -196,9 +196,9 @@ export default function OutletTimeline({
                   aria-hidden={i !== active}
                 />
               ))}
-              <span className="tl-badge" key={`b${active}`}>
+              {/* <span className="tl-badge" key={`b${active}`}>
                 {steps[active].year}
-              </span>
+              </span> */}
               <span className="tl-counter">
                 <b>{pad(active + 1)}</b> / {pad(steps.length)}
               </span>

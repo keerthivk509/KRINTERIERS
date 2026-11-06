@@ -103,3 +103,61 @@ export const FALLBACK_SERVICES = [
     ],
   },
 ];
+export const gallery = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1000&q=85",
+    title: "Nordic Living",
+    subtitle: "Living Room",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&q=85",
+    title: "Warm Minimal",
+    subtitle: "Bedroom",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1000&q=85",
+    title: "Clay Studio",
+    subtitle: "Workspace",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&q=85",
+    title: "Soft Light",
+    subtitle: "Living Room",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=85",
+    title: "Quiet Corner",
+    subtitle: "Reading Nook",
+  },
+];
+const getCategoryId = (category) => String(category.id);
+
+export const mapCategory = (category) => ({
+  id: getCategoryId(category),
+  name: category.title,
+  heading: category.title,
+  description: category.description || "",
+  heroImage: category.image || "",
+  slug: category.slug,
+  designs: (category.designs || []).map((design) => ({
+    ...design,
+    id: String(design.id),
+    categoryId: getCategoryId(category),
+
+    // Use the API cover image as the first image.
+    images: design.images?.length
+      ? design.images
+      : design.coverImage
+        ? [design.coverImage]
+        : [],
+
+    shortDescription: design.shortDescription || design.description || "",
+  })),
+
+  faqs: category.faqs || [],
+});

@@ -1,7 +1,8 @@
 .floating-social {
     position: fixed;
-    right: 25px;
-    bottom: 25px;
+    right: 0px;
+    top: 50%;
+    /* bottom: 18rem; */
     z-index: 9999;
     display: flex;
     flex-direction: column;

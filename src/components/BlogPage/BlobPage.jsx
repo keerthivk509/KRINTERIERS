@@ -208,6 +208,7 @@ export default function BlobPage({
   homeHref = "/",
   ctaHref = "#contact",
   ctaLabel = "Get a Free Quote",
+  onContactClick,
 }) {
   const [heroReady, setHeroReady] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(null);
@@ -318,7 +319,11 @@ export default function BlobPage({
         <Reveal className="bp-wrap">
           <p className="bp-label">LET’S TALK</p>
           <h2>Ready to start your project?</h2>
-          <a className="bp-btn" href={ctaHref}>
+          <a
+            className="bp-btn"
+            // href={ctaHref}
+            onClick={() => onContactClick()}
+          >
             {ctaLabel} →
           </a>
         </Reveal>

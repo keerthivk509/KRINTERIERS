@@ -193,6 +193,7 @@ export default function FurnitureShowcase({
                 {it.variant !== "cutout" && (
                   <Photo src={it.src} fallback={it.fallback} alt={it.alt} />
                 )}
+
                 {it.variant === "overlay" && (
                   <span className="fs-shade" aria-hidden="true" />
                 )}
@@ -202,6 +203,11 @@ export default function FurnitureShowcase({
                   </p>
                 )}
               </div>
+              {it.variant === "photo" && (
+                <div className="fs-alt-text">
+                  <span>{it.alt}</span>
+                </div>
+              )}
               {it.variant === "cutout" && (
                 <Cutout src={it.cutout} alt={it.alt} />
               )}

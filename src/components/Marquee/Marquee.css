@@ -27,6 +27,20 @@
     animation-play-state: paused;
 }
 
+.why-marquee-card:hover .why-marquee-icon i {
+    /* background: #8a3333; */
+    color: #FFF;
+}
+
+.why-marquee-card:hover .why-marquee-icon {
+    background: #8a3333;
+    /* color: #FFF; */
+}
+
+.why-marquee-card:hover .why-marquee-content h3 {
+    color: #a8875c;
+}
+
 /* Individual benefit */
 .why-marquee-card {
     flex: 0 0 350px;
@@ -35,16 +49,16 @@
     justify-items: center;
     align-items: center;
     gap: 18px;
-    padding: 0 25px;
+    padding: 25px;
     border-right: 1px solid #e5ded3;
     box-sizing: border-box;
 }
 
 /* Circular icon background */
 .why-marquee-icon {
-    flex: 0 0 60px;
-    width: 60px;
-    height: 60px;
+    flex: 0 0 90px;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,13 +67,13 @@
 }
 
 .why-marquee-icon i {
-    font-size: 34px;
-    color: var(--why-ink);
+    font-size: 46px;
+    /* color: var(--why-ink); */
 }
 
 /* Benefit title and description */
 .why-marquee-content {
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
     flex: 1;
     min-width: 0;
@@ -134,15 +148,15 @@
         gap: 12px;
     }
 
-    .why-marquee-icon {
+    /* .why-marquee-icon {
         flex-basis: 62px;
         width: 62px;
         height: 62px;
-    }
+    } */
 
-    .why-marquee-icon i {
+    /* .why-marquee-icon i {
         font-size: 28px;
-    }
+    } */
 
     .why-marquee-content {
         padding-left: 10px;

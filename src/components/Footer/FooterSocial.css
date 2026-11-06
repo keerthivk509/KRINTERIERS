@@ -1,0 +1,196 @@
+/* ==============================
+   FOOTER MAIN
+================================ */
+
+.site-footer {
+    width: 100%;
+    /* background: #080808; */
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==============================
+   FOOTER CONTENT
+================================ */
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border-top: 1px solid #343434;
+    padding: 10px 25px;
+}
+
+/* ==============================
+   COPYRIGHT TEXT
+================================ */
+
+.footer-content p {
+    color: #91b9e8;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ==============================
+   FOOTER SOCIAL ICONS
+================================ */
+
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    width: auto;
+}
+
+/* Individual social icon */
+
+.footer-social-item {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #101a2d;
+    color: #858585;
+
+    text-decoration: none;
+    flex-shrink: 0;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Icon size */
+
+.footer-social-item svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hover effect */
+
+.footer-social-item:hover {
+    color: #ffffff;
+    background: #17243a;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* ==============================
+   TABLET RESPONSIVE
+================================ */
+
+@media (max-width: 992px) {
+
+    /* .site-footer {
+        padding: 24px 3%;
+    } */
+
+    .footer-content {
+        gap: 20px;
+    }
+
+    .footer-social {
+        gap: 16px;
+    }
+
+    /* .footer-social-item {
+        width: 62px;
+        height: 62px;
+    }
+
+    .footer-social-item svg {
+        width: 27px;
+        height: 27px;
+    } */
+
+    .footer-content p {
+        font-size: 16px;
+    }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 576px) {
+
+    /* .site-footer {
+        padding: 22px 16px;
+    } */
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        /* padding-top: 22px; */
+    }
+
+    .footer-content p {
+        font-size: 14px;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .footer-social {
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+    }
+
+    /* .footer-social-item {
+        width: 48px;
+        height: 48px;
+    }
+
+    .footer-social-item svg {
+        width: 22px;
+        height: 22px;
+    } */
+}
+
+/* ==============================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 360px) {
+
+    .footer-social {
+        gap: 10px;
+    }
+
+    /* .footer-social-item {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-social-item svg {
+        width: 20px;
+        height: 20px;
+    } */
+}
+
+/* ==============================
+   ACCESSIBILITY
+================================ */
+
+/* @media (prefers-reduced-motion: reduce) {
+
+    .footer-social-item {
+        transition: none;
+    }
+} */

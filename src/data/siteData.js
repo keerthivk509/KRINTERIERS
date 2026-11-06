@@ -2,35 +2,20 @@
 export const navigation = [
   {
     label: "Designs",
-    href: "#about",
-    submenu: [
-      { label: "Our Story", href: "#about" },
-      { label: "Why Choose Us", href: "#why-us" },
-      { label: "Our Process", href: "#process" },
-    ],
+    href: "/design",
   },
   {
     label: "Services",
-    href: "#services",
-    submenu: [
-      { label: "Residential Design", href: "#services" },
-      { label: "Commercial Design", href: "#services" },
-      { label: "Modular Kitchen", href: "#services" },
-      { label: "Renovation", href: "#services" },
-    ],
+    href: "/service",
   },
   {
     label: "Works",
-    href: "#gallery",
-    submenu: [
-      { label: "Living Rooms", href: "#gallery" },
-      { label: "Bedrooms", href: "#gallery" },
-      { label: "Kitchens", href: "#gallery" },
-    ],
+    href: "/work",
   },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Review", href: "#review" },
 ];
 export const services = [
   {

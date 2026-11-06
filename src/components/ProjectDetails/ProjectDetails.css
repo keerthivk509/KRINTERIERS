@@ -1,0 +1,519 @@
+/* =================================
+   PROJECT DETAILS
+================================= */
+
+.project-details {
+    --bg: #f3efe5;
+    --ink: #25231f;
+    --muted: #77736b;
+    --surface: #e9e2d3;
+    --gold: #a18a62;
+
+    background: var(--bg);
+    color: var(--ink);
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 70px;
+}
+
+.project-details button {
+    font: inherit;
+}
+
+.project-loading {
+    min-height: 60vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+
+/* =================================
+   INTRODUCTION
+================================= */
+
+.project-intro {
+    max-width: 1200px;
+    margin: auto;
+    padding: 55px 7% 35px;
+}
+
+.project-intro-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.project-intro-title span {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.project-intro-title h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 500;
+    margin-top: 10px;
+    letter-spacing: -1.5px;
+}
+
+.project-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.project-intro-description {
+    font-size: 20px;
+    line-height: 1.9;
+    color: #555149;
+}
+
+.project-intro-description p+p {
+    margin-top: 15px;
+}
+
+.project-cover {
+    width: 100%;
+    height: 270px;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #ddd4c5;
+    cursor: pointer;
+}
+
+.project-cover img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* =================================
+   PROJECT INFORMATION
+================================= */
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 28px 20px;
+    margin: 45px auto 15px;
+    max-width: 850px;
+}
+
+.project-info-item span {
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.project-info-item h4 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 7px;
+}
+
+
+/* =================================
+   SCOPE OF WORK
+================================= */
+
+.project-scope {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 7% 65px;
+}
+
+.scope-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.scope-heading h2 {
+    font-size: 29px;
+    font-weight: 500;
+}
+
+.scope-heading p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.scope-item {
+    text-align: center;
+    border-top: 1px solid #d8d0c2;
+    padding-top: 20px;
+}
+
+.scope-item span {
+    font-size: 16px;
+    color: var(--gold);
+}
+
+.scope-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+
+/* =================================
+   DESIGN SECTIONS
+================================= */
+
+.project-sections {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 7%;
+}
+
+.project-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 65px;
+    padding: 55px 0;
+    min-height: 440px;
+}
+
+.project-section.image-left .section-visual {
+    order: 1;
+}
+
+.project-section.image-left .section-content {
+    order: 2;
+}
+
+.project-section.image-right .section-content {
+    order: 1;
+}
+
+.project-section.image-right .section-visual {
+    order: 2;
+}
+
+
+/* =================================
+   SECTION CONTENT
+================================= */
+
+.section-number {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+.section-content h2 {
+    font-size: clamp(23px, 3vw, 34px);
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.section-content>p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #716d65;
+}
+
+.section-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.highlight-card {
+    background: #e9e1d0;
+    border-radius: 5px;
+    padding: 14px;
+}
+
+.highlight-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.highlight-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #716d65;
+}
+
+
+/* =================================
+   SECTION IMAGES
+================================= */
+
+.section-visual {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-main-image {
+    width: 85%;
+    height: 350px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.section-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+
+.section-main-image:hover img {
+    transform: scale(1.04);
+}
+
+
+/* FLOOR PLAN OVERLAY */
+
+.section-plan-image {
+    position: absolute;
+    bottom: -5px;
+    left: 5%;
+    width: 65%;
+    height: 90px;
+    background: white;
+    border: 5px solid white;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.section-plan-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: white;
+}
+
+
+/* =================================
+   LIGHTBOX
+================================= */
+
+.project-lightbox {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, .94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.project-lightbox img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    background: transparent;
+    border: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+    .project-intro-grid {
+        gap: 25px;
+    }
+
+    .project-section {
+        gap: 35px;
+        min-height: 380px;
+    }
+
+    .section-main-image {
+        height: 290px;
+    }
+
+    .section-visual {
+        min-height: 310px;
+    }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .project-details {
+        padding-bottom: 35px;
+    }
+
+    .project-intro {
+        padding: 35px 6% 20px;
+    }
+
+    .project-intro-title {
+        margin-bottom: 25px;
+    }
+
+    .project-intro-title h1 {
+        font-size: 29px;
+    }
+
+    .project-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-intro-description {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .project-cover {
+        height: 180px;
+    }
+
+    .project-info-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px 10px;
+        margin-top: 30px;
+    }
+
+    .project-info-item span {
+        font-size: 10px;
+    }
+
+    .project-info-item h4 {
+        font-size: 11px;
+    }
+
+    .project-scope {
+        padding: 35px 6% 30px;
+    }
+
+    .scope-heading h2 {
+        font-size: 24px;
+    }
+
+    .scope-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .scope-item {
+        padding-top: 12px;
+    }
+
+    .scope-item h3 {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .project-sections {
+        padding: 0 6%;
+    }
+
+    .project-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 40px 0;
+        min-height: auto;
+    }
+
+    .project-section.image-left .section-visual,
+    .project-section.image-left .section-content,
+    .project-section.image-right .section-content,
+    .project-section.image-right .section-visual {
+        order: initial;
+    }
+
+    /* Keep image above text on mobile */
+
+    .project-section .section-visual {
+        order: 1 !important;
+        min-height: 260px;
+    }
+
+    .project-section .section-content {
+        order: 2 !important;
+    }
+
+    .section-main-image {
+        width: 82%;
+        height: 260px;
+    }
+
+    .section-plan-image {
+        height: 70px;
+        width: 65%;
+        bottom: -5px;
+    }
+
+    .section-content h2 {
+        font-size: 25px;
+        margin: 15px 0;
+    }
+
+    .section-content>p {
+        font-size: 11px;
+    }
+
+    .section-highlights {
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .highlight-card {
+        padding: 11px;
+    }
+
+    .highlight-card h4 {
+        font-size: 10px;
+    }
+
+    .highlight-card p {
+        font-size: 9px;
+    }
+
+    .project-lightbox {
+        padding: 15px;
+    }
+
+}

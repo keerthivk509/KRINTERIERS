@@ -15,6 +15,9 @@ const PAGE_PATH = import.meta.env.VITE_PAGE_PATH || "/pages";
 const CAROUSELS = import.meta.env.VITE_CAROUSEL_PATH || "/carousels";
 const REVIEWS = import.meta.env.VITE_REVIEWS_PATH || "/reviews";
 const FAQ = import.meta.env.VITE_FAQ_PATH || "/faq";
+const PROJECTS = import.meta.env.VITE_PROJECT_PATH || "/project";
+const DESIGN_categories = "/design-gallery/public/categories";
+
 const ASSET_URL = (
   import.meta.env.VITE_ASSET_URL ||
   (API_URL ? new URL(API_URL, window.location.origin).origin : "")
@@ -161,6 +164,18 @@ export const getPublicFAQs = async (signal) => {
   const data = await request(FAQ, signal);
   return data;
 };
+
+export const getPublicProjects = async (signal) => {
+  const data = await request(PROJECTS, signal);
+  return data;
+};
+
+export const getPublicDesignCategories = async (signal) => {
+  /// /design-gallery/public/categories
+  const data = await request(DESIGN_categories, signal);
+  return data;
+};
+
 export async function getPage(slug, signal) {
   if (DEMO_MODE) {
     const page = DEMO_PAGES[slug];

@@ -89,7 +89,7 @@
 .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 760px;
+    /* max-width: 760px; */
 }
 
 .hero-content h1 {
@@ -118,6 +118,7 @@
 }
 
 .about-button {
+    border-radius: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -136,7 +137,8 @@
 
 .about-button:hover {
     background: transparent;
-    color: var(--ink) !important;
+    color: white !important;
+
     transform: translateY(-2px);
 }
 

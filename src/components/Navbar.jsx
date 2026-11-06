@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { navigation } from "../data/siteData.js";
 import useMenus from "../hooks/useMenus.js";
-import logo from "../assets/LOGO.png";
+import logo from "../assets/LOGOKR.svg";
 import "./Navbar.css";
 import AnimatedLogo from "./AnimatedLogo/AnimatedLogo.jsx";
 import ContactModal from "./ContactModal/ContactModal.jsx";
-export default function Navbar({ onContactClick }) {
+export default function Navbar({ onContactClick, design }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [tabOpen, setTabOpen] = useState(true);
+
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 992);
   const menus = useMenus();
@@ -19,6 +21,9 @@ export default function Navbar({ onContactClick }) {
 
       if (window.innerWidth >= 992) {
         setMobileOpen(false);
+        setTabOpen(true);
+      } else {
+        setTabOpen(false);
       }
     };
 
@@ -49,7 +54,17 @@ export default function Navbar({ onContactClick }) {
           })),
         };
       }
-      console.log("item", item);
+      if (item?.href === "/design") {
+        console.log("design", design);
+        return {
+          ...item,
+          submenu: design?.map((sub) => ({
+            label: sub.name,
+            to: "/design",
+            activeTab: `${sub?.id}`,
+          })),
+        };
+      }
       return item;
     }),
 
@@ -89,7 +104,12 @@ export default function Navbar({ onContactClick }) {
   const renderSubmenuLinks = (submenu = []) =>
     submenu.map((sub, index) =>
       sub.to ? (
-        <Link to={sub.to} key={`${sub.label}-${index}`} onClick={close}>
+        <Link
+          to={sub.to}
+          key={`${sub.label}-${index}`}
+          state={{ sub }}
+          onClick={close}
+        >
           {sub.label}
         </Link>
       ) : (
@@ -108,16 +128,15 @@ export default function Navbar({ onContactClick }) {
         className={`nav-item ${hasSubmenu ? "has-submenu" : ""}`}
         key={`${item.label}-${index}`}
         onMouseEnter={() => {
-          if (window.innerWidth >= 992 && item.submenu) {
-            setOpenSubmenu(index);
+          if (isDesktop && hasSubmenu) {
+            setOpenSubmenu(key);
           }
         }}
         onMouseLeave={() => {
-          if (window.innerWidth >= 992) {
+          if (isDesktop && hasSubmenu) {
             setOpenSubmenu(null);
           }
         }}
-        onClick={() => toggleSubmenu(key)}
       >
         <div className="nav-link-row">
           {item.to ? (
@@ -136,7 +155,10 @@ export default function Navbar({ onContactClick }) {
               className="submenu-toggle"
               aria-label={`Toggle ${item.label} submenu`}
               aria-expanded={openSubmenu === key}
-              onClick={close}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleSubmenu(key);
+              }}
             >
               <i className="bi bi-chevron-down" />
             </button>
@@ -156,17 +178,16 @@ export default function Navbar({ onContactClick }) {
 
   return (
     <nav className={`site-navbar ${mobileOpen ? "site-navbar-color" : ""}`}>
-      <Link className="brand-lockup" to="/" onClick={close}>
-        <AnimatedLogo
+      <div className="container nav-inner">
+        <Link className="brand-lockup" to="/" onClick={close}>
+          {/* <AnimatedLogo
           src={logo}
           alt="KR Interior Designs"
           className="brand-logo"
           logo={logo}
-        />
-        {/* <img src={logo} alt="KR" className="brand-logo" /> */}
-      </Link>
-
-      <div className="container nav-inner">
+        /> */}
+          <img src={logo} alt="KR" className="brand-logo" />
+        </Link>
         <button
           type="button"
           className="mobile-toggle"
@@ -212,9 +233,6 @@ export default function Navbar({ onContactClick }) {
                 }`}
               >
                 {moreItems.map((item, index) => {
-                  {
-                    console.log("moreItems", moreItems);
-                  }
                   const hasSubmenu = Boolean(item.submenu?.length);
                   const key = `more-item-${index}`;
 
@@ -260,18 +278,25 @@ export default function Navbar({ onContactClick }) {
               </div>
             </div>
           )}
-
           <a
-            className="btn btn-gold nav-quote"
-            href="#contact"
-            onClick={() => {
-              close;
+            className="btn btn-gold nav-quote nav-quote-lap "
+            onClick={(e) => {
+              e.preventDefault();
               onContactClick();
             }}
           >
             Get it now
           </a>
         </div>
+        <a
+          className="btn btn-gold nav-quote nav-quote-tab "
+          onClick={(e) => {
+            e.preventDefault();
+            onContactClick();
+          }}
+        >
+          Get it now
+        </a>
       </div>
     </nav>
   );

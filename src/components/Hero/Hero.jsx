@@ -26,7 +26,7 @@ const slideds1 = [
     desc: "We combine practical layouts with timeless style to create spaces that look beautiful and work effortlessly.",
   },
 ];
-function Hero() {
+function Hero({ onContactClick }) {
   const [active, setActive] = useState(0);
   const [slides, setSlides] = useState(slideds1);
 
@@ -104,7 +104,7 @@ function Hero() {
       <div className="hero-shade" />
 
       <div className="container hero-content" key={safeActive}>
-        <p className="eyebrow light-eyebrow">{slide.eyebrow}</p>
+        <p className="eyebrow light-eyebrow mt-5">{slide.eyebrow}</p>
 
         <h1>
           <span className="line">
@@ -118,10 +118,18 @@ function Hero() {
         <p className="hero-text">{slide.desc}</p>
 
         <div className="hero-actions">
-          <a className="btn btn-burgundy" href="#gallery">
+          <a
+            className="btn btn-burgundy"
+            // href="#gallery"
+            onClick={() => onContactClick()}
+          >
             Explore Our Work <i className="bi bi-arrow-right ms-2" />
           </a>
-          <a className="btn btn-outline-light" href="#contact">
+          <a
+            className="btn btn-outline-light"
+            // href="#contact"
+            onClick={() => onContactClick()}
+          >
             Get it now
           </a>
         </div>

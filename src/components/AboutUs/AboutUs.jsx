@@ -13,7 +13,7 @@ const content = {
   videoId: "YOUR_YOUTUBE_VIDEO_ID",
 };
 
-export default function AboutUs() {
+export default function AboutUs({ onContactClick }) {
   useEffect(() => {
     const elements = document.querySelectorAll(".about-reveal");
 
@@ -141,6 +141,36 @@ export default function AboutUs() {
         </div>
       </section>
 
+      {/*CO Founder */}
+      <section className="about-section founder-section">
+        <div className="about-copy founder-copy about-reveal">
+          <span className="eyebrow">04 — THE PERSON BEHIND THE VISION</span>
+          <h2>
+            Meet the mind
+            <br />
+            <em>behind the spaces.</em>
+          </h2>
+          <h3>{content.founder}</h3>
+          <span className="founder-role">{content.role}</span>
+          <p>
+            With a passion for beautiful, functional spaces, our founder brings
+            together creativity, attention to detail, and a deep understanding
+            of how people experience their surroundings.
+          </p>
+          <p>
+            Every project is an opportunity to listen, collaborate, and create a
+            space that feels uniquely yours.
+          </p>
+        </div>
+        <div className="founder-image about-reveal">
+          <img
+            src="/images/founder.jpg"
+            alt="Founder of KR Interior Designs"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* YouTube */}
       <section className="motion-section">
         <div className="motion-heading about-reveal">
@@ -178,7 +208,11 @@ export default function AboutUs() {
           Have a project in mind? Let's talk about the space you've always
           imagined.
         </p>
-        <a href="/contact" className="about-button">
+        <a
+          // href="/contact"
+          className="about-button"
+          onClick={() => onContactClick()}
+        >
           Discuss Your Project <span>↗</span>
         </a>
       </section>
